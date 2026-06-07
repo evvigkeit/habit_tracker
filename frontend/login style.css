@@ -1,0 +1,81 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #b5ffde;   
+    
+}
+
+.form {
+    border-radius: 20px;
+    width: 400px;
+    height: 322px;
+    top: 123px;
+    background-color: #CCCCFF;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 20px 20px 30px;
+
+    color: #007060; 
+}
+#user {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 15px 80px 15px;
+    border-radius: 10px;
+    color: #007060; 
+    border-width: medium;
+    border-color: #007060;
+}
+
+#pass {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 15px 80px 20px;
+    border-radius: 10px;
+    border-width: medium;
+    border-color: #007060;
+    color: #007060; 
+    
+}
+
+#submit {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #007060;
+    border: 1px solid #007060;
+    border-radius: 50px;
+    padding: 8px;
+    margin: 13px 144px;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+}
+
+.reg {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 22px;
+    margin: 40px 20px 10px;
+
+    color: #007060; 
+}

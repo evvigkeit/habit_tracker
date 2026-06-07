@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/login style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <main class="main">
+    <div class="form">
+        <h1>Login</h1>
+
+    <form id="user_data" action="/authorized" method="post">
+        <input type="text" id="user" placeholder="Username" name="username">
+        <input type="password" id="pass" placeholder="Password" name="password">
+    </form>
+    <button id="submit" type="submit" form="user_data">Let's start!</button>
+    <div class="reg">
+        <label for="to_reg">New to HobbyTracker?</label>
+        <a href="#">Register!</a>
+    </div>
+    </div>
+    </main>
+</body>
+</html>
