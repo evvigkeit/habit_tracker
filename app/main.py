@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Form
-from fastapi.responses import FileResponse
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi import Request
 
@@ -17,16 +17,23 @@ We need it here to process CSS files which are connected to the main HTML file.
 '''
 app.mount("/static", StaticFiles(directory="app/styles"), name="static")
 
-@app.get("/login")
+@app.get("/authorization")
 def login_page(request: Request):
-    return templates.TemplateResponse(request, "authorization.html")
+    return templates.TemplateResponse("authorization.html",{"request": request})
 
 @app.get("/registration")
 def registration_page(request: Request):
-    return templates.TemplateResponse(request, "registration.html")
+    return templates.TemplateResponse("registration.html", {"request": request})
 
 
-@app.post("/authorized")
+@app.post("/authorization")
 def login(request: Request, username: str = Form(), password: str = Form()):
-    db.add_user_data(username, password)
-    return templates.TemplateResponse(request, "authorized.html", {"username": username})
+    user = db.add_user_data(username, password)
+    if user and user[1] != password:
+        return templates.TemplateResponse("authorization.html",{"request": request, "password_err": True})
+    else:
+        return RedirectResponse(f"/authorized/{username}", status_code=303)
+
+@app.get("/authorized/{username}")
+def authorized_page(request: Request, username: str):
+    return templates.TemplateResponse("authorized.html", {"request": request, "username": username})

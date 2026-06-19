@@ -16,7 +16,13 @@ else:
 
 cursor = conn.cursor()
 
-def add_user_data(user, password):
-    cursor.execute(f"INSERT INTO user_data (username, user_password) VALUES ('{user}', '{password}')")
-    conn.commit()
-    print('User data hass been added successfuly!')
+def add_user_data(login, password):
+    cursor.execute(f"SELECT username, user_password FROM user_data WHERE username='{login}'")
+    user = cursor.fetchone()
+    
+    if not user:
+        cursor.execute(f"INSERT INTO user_data (username, user_password) VALUES ('{login}', '{password}')")
+        conn.commit()
+        print('User data hass been added successfuly!')
+        return None
+    return user

@@ -9,10 +9,15 @@
     <div class="form">
         <h1>Login</h1>
 
-    <form id="user_data" action="/authorized" method="post">   
+        <form id="user_data" method="post"> 
         <input type="text" class="user_data_form_el" placeholder="Username" name="username">
         <input type="password" class="user_data_form_el" placeholder="Password" name="password">
     </form>
+    
+    {% if password_err %}
+        <p style="color: red; margin: 5px 80px;">Oops! Wrong password!</p>
+    {% endif %}
+        
     <button id="submit" type="submit" form="user_data">Let's start!</button>
     <div class="reg">
         <label for="to_reg">New to HobbyTracker?</label>
