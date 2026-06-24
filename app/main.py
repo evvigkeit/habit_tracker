@@ -18,22 +18,22 @@ app.mount("/static", StaticFiles(directory="app/styles"), name="static")
 
 @app.get("/authorization")
 def login_page(request: Request):
-    return templates.TemplateResponse("authorization.html",{"request": request})
+    return templates.TemplateResponse("authorization/authorization.html",{"request": request})
 
 @app.post("/authorization")
 def login(request: Request, username: str = Form(), password: str = Form()):
     user = db.check_user_exist(username, password)
     if user:
         if user['password'] != password:
-            return templates.TemplateResponse("authorization.html",{"request": request, "password_err": 1})  # 1 - wrong password, 2 - user not exists
+            return templates.TemplateResponse("authorization/authorization.html",{"request": request, "password_err": 1})  # 1 - wrong password, 2 - user not exists
         return RedirectResponse(f"/authorized/{username}", status_code=303)
     else:
-        return templates.TemplateResponse("authorization.html",{"request": request, "password_err": 2})
+        return templates.TemplateResponse("authorization/authorization.html",{"request": request, "password_err": 2})
 
 
 @app.get("/registration")
 def registration_page(request: Request):
-    return templates.TemplateResponse("registration.html", {"request": request})
+    return templates.TemplateResponse("authorization/registration.html", {"request": request})
 
 @app.post("/registration")
 def login(request: Request, username: str = Form(), email: str = Form(), phone: str = Form(), password: str = Form(), ch_password: str = Form()):
@@ -41,10 +41,10 @@ def login(request: Request, username: str = Form(), email: str = Form(), phone: 
     if user:
         for k, v in {"username": username, "email": email, "phone": phone}.items():
             if user[k] == v:
-                return templates.TemplateResponse("registration.html",{"request": request, "registration_err": k})
+                return templates.TemplateResponse("authorization/registration.html",{"request": request, "registration_err": k})
 
     if password != ch_password:
-        return templates.TemplateResponse("registration.html",{"request": request, "registration_err": "password"})
+        return templates.TemplateResponse("authorization/registration.html",{"request": request, "registration_err": "password"})
     db.create_user(username, email, phone, password)
     return RedirectResponse(f"/authorized/{username}", status_code=303)
 
