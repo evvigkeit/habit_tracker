@@ -1,13 +1,13 @@
-{% extends 'layout.html' %}
+{% extends 'auth layout.html' %}
 
 {% block title %}Login{% endblock title %}
     
-{% block styles %}<link rel="stylesheet" href="/static/login style.css">{% endblock styles %}
+{% block styles %}<link rel="stylesheet" href="/static/authorization style.css">{% endblock styles %}
     
 {% block content %}
     <main class="main">
     <div class="form">
-        <h1>Login</h1>
+        <h1 id=h1_reg>Login</h1>
 
         <form id="user_data" method="post"> 
         <input type="text" class="user_data_form_el" placeholder="Username" name="username">
@@ -23,7 +23,7 @@
     <button id="submit" type="submit" form="user_data">Let's start!</button>
 
     <div class="reg">
-        <p style="display: inline-block" for="to_reg">New to HobbyTracker?</p>
+        <p style="display: inline-block" for="to_reg">New to FRPokedex?</p>
         <a href="registration">Sign up!</a>
     </div>
     </div>

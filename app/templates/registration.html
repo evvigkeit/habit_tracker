@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'auth layout.html' %}
 
 {% block title %}Registration{% endblock title %}
     
@@ -7,7 +7,7 @@
 {% block content %}
     <main class="main">
     <div class="form">
-        <h1>Create an Account</h1>
+        <h1 id=h1_reg>Create an Account</h1>
 
     <form id="registration_form" method="post">   <!--action -- link to the server to which we send a request-->
         <input type="text" class="user_data_form_el" placeholder="Username" name="username">    <!--id - to style, name - to submit the form, placeholder - visible to user-->

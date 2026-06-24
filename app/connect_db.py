@@ -7,7 +7,7 @@ load_dotenv()  # get secret data from .env
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
-conn = psycopg2.connect(dbname="habit_tracker", host="localhost", user=DB_USER, password=DB_PASSWORD, port="5432")
+conn = psycopg2.connect(dbname="FRPokedex", host="localhost", user=DB_USER, password=DB_PASSWORD, port="5432")
 print(("this shiii failed :(", 'ok!')[bool(conn)])
 
 cursor = conn.cursor()
